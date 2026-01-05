@@ -535,7 +535,7 @@ The speaker finished by talking about some future improvements they would like t
 - demoed creating mount and network namespaces
 
 - showed how you can crash the kernel by creating an unprevalidged namepsace without sudo
-- soltuion - alloow some applications to create user namespaces and displable for others
+- soltuion - allow some applications to create user namespaces and displable for others
     - at cloud fare used bpf to add  in the process check into userns_create hook
 
 ### Zephyr Porting Efforts in High Performance SoCs (14:50 B2 4F)
@@ -549,5 +549,9 @@ The speaker finished by talking about some future improvements they would like t
 - still need to improve driver support for high perf SoCs as mainly for MCUs
 - talked about steps they took to boot zepyhr
 -   - they first  port to a wdiely used soC supported by Linux
-    - went through preperation steps as well as confguration an build files
+    - went through preperation steps as well as confguration an build files -->
+
+## Conclusion
+Overall it was a good conference. I attended a few other talks however the jet lag always seemed to hit hard at about 3 O'Clock in the afternoon so I struggled to really take much in aftyer that each day. It was interesting to learn about the SDV model as (despite working for codethink) I hadnt really been exposed to it in that much detail. Although interesting, the shift in the Automotive industry to start treating cars as software platforms concerns me due to the added complications this brings. For example introducing this huge stack of virtualisation seems to add alot of uneeded layers between the software and hardware which I imagine is going to make debugging hardware level issues very difficult. There was also an analogy made to the mobile phone when talking about the ability to provide over the air updates. This of course has alot of benefits for the software developer but also makes it very easy for the software to outgrow the hardware running it which is fine when the hardware is a phone, not so much when its your brakes.
+I ended up attending alot of Zephyr talks which is a project I hope I can get involved with in the future.
 
