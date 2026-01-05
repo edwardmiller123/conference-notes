@@ -1,17 +1,18 @@
 # OSS - Japan
+This was my second ever conference and first time visiting Japan which was nice. I tried to take notes throughout each talk but there were a few I either missed key points for or didnt quite understand. The jet lag always seemed to hit hard at about 3 O'Clock in the afternoon so I struggled to really take much in after that each day. Below are the talks I found the most interesting.
 
 ## 08/12/25
 
 ### Intro talks
 #### Intro keynote
-A general talk about the state of the Linux foundation and why open source was important to AI. The speaker made comparisons to how the performance of the linux kernel has improved significantly due to everyone having a common interest in improving it due to its wide use. Using primarily open source software in the AI infrastructure stack would have a similar effect. He also added some other interesting Ai related points such as how he thought we were not in an AI bubble so much but potentially an LLM bubble which seems to be a common sentiment. He also pointed out that the main bottle neck in scaling out all this AI infrastructure is actually the power requirements which is pretty dystopian if you ask me. 
+A general talk about the state of the Linux foundation and why open source was important to AI. The speaker made comparisons to how the performance of the linux kernel has improved significantly due to everyone having a common interest in improving it due to its wide use. Using primarily open source software in the AI infrastructure stack would have a similar effect. He also added some other interesting AI related points such as how he thought we were not in an AI bubble so much but potentially an LLM bubble which seems to be a common sentiment. He also pointed out that the main bottle neck in scaling out all this AI infrastructure is actually the power requirements which is pretty dystopian if you ask me. 
 
 <!-- - Infastructure bottleneck in scaling AI due to power and hardware
 - Not in Ai bubble but more likely in LM bubble
 - talked about how opensource important in Ai due to the software infrasturce stack, e.g pytorch and down
     - companies can work together to improve model performance -->
 #### Agones
-A short talk about Agones, a GCP kubernetes tool optimised for running video game servers. In summary, kubernetes treats pods as stateless microservices which is not a great model for a video game server. Agones extends the kubernetes API for keeping state better. The speaker didnt go into detail as to how exactly this differs from regualr kubernetes. It seems like having persistant volumes for the pods would work fine for this purpose? He went on to talk about Arc Raiders as an example of a video game running on this new service.
+A short talk about Agones, a GCP kubernetes tool optimised for running video game servers. In summary, kubernetes treats pods as stateless microservices which is not a great model for a video game server. Agones extends the kubernetes API for keeping state better. The speaker didnt go into detail as to how exactly this differs from regular kubernetes. It seems like having persistant volumes for the pods would work fine for this purpose maybe reading stuff from disk is to slow? He went on to talk about Arc Raiders as an example of a video game running on this new service.
 
 <!-- - google project for optimising kubernetes for running game servers
 - k8s treats services as stateless microservices, agones extends k8s api for keeping state better. Used Arc raiders as a case study
@@ -21,7 +22,7 @@ A short talk about Agones, a GCP kubernetes tool optimised for running video gam
 
 #### AGL SoDev
 An overview and update on the recent improvements of the AGL SoDev platform. This is a Linux based OS and development platform designed for use in automotive.
-The speaker started off by talking about the transition in automotive from a hardware to a software based product. This was compared to the mobile phone industry where phones orignally had very custom hardware and software desgined specifically for them but they have transitioned to a generic platform where that developers can make applications for wihtout having to customise them to specific hardware.
+The speaker started off by talking about the transition in automotive from a hardware to a software based product. This was compared to the mobile phone industry where phones orignally had very custom hardware and software desgined specifically for them but they have transitioned to a generic platform where that developers can make applications for without having to customise them to specific hardware.
 
 He then went on to go over the definition of an SDV the main points of this being:
 - The many ECUs of the vehicle have been replaced with software running on a single processor
@@ -53,7 +54,7 @@ Next he then gave an overview of the AGL SoDev platform which is a linux based O
 
 #### Accelerating SDV through open source virtualisation
 This talk covered similar ponts to the last, namely highlighting the benefits of using viirtualised hardware all running on a single OS as opposed to using physical ECUs. They were specifically talking about the VirtIO technology and how it allows software to be moved from real hardware to a virtualised system in a binary compatible manner. 
-The second key point was about corporate OSS adoption and how companies should contribute to themselves or better launch there own OSS projects.
+The second key point was about corporate OSS adoption and how companies should contribute themselves or better launch there own OSS projects.
 
 <!-- - talked about speed of product development. SDVs decrease development time
 - hardware approach to software
@@ -75,9 +76,9 @@ The second key point was about corporate OSS adoption and how companies should c
     - companies should contribute to OSS themselves or launch their own projects  -->
 
 #### What is learning in AI
-This was a talk discussing how AI is changing the way we learn, escpecially for the younger generations. The speaker started off talking about the 46% drop in entry level tech hiring in the UK and how this is due to AI automating entry level tasks (or at least that is what the employers beleive...). This is quite worrying as it is effecitivly removing he apprenticeship pipeline which will only lead to a lack of experienced developers in the years to come. She went on to say how education needs to shift from teaching statc knowledge to having more of a focus on dynamic thinking. 
+This was a talk discussing how AI is changing the way we learn, escpecially for the younger generations. The speaker started off talking about the 46% drop in entry level tech hiring in the UK and how this is due to AI automating entry level tasks (or at least that is what the employers beleive...). This is quite worrying as it is effectively removing the apprenticeship pipeline which will only lead to a lack of experienced developers in the years to come. She went on to say how education needs to shift from teaching statc knowledge to having more of a focus on dynamic thinking. 
 The next point raised was that as well as changing education we should try to create what she called Socratic AI which tries to ask people more questions to aid the thinking process rather than just spewing out answers with varying degrees of accuracy. Finally, she finished by talking about the use of socratic AI in the OSS pipline, specifically how it could be used to onboard new maintainers to a project.
-Although I dislike the hype around AI I think disscussions like this are very important as the technology is likely here to stay and so we need to be able to use it effectivly.
+Although I dislike the hype around AI I think disscussions like this are very important as the technology is likely here to stay and so we need to be able to use it effectively.
 
 <!-- - tech professionals need to learn annualy to stay competetive
 - 46% drop in entry level tech hiring in uk
@@ -142,8 +143,8 @@ Overall I was quite suprised at the amount of abstraction and standardisation in
 - I was suprosed there was so much abstraction in space craft development -->
 
 ### Applying Zephyr RTOS in Spacecraft Development
-This talked about a robotics project for JAXA to deploy a small robot used for streaming video around the inside of the ISS. The Robot looking like the Jedi training orb and was propelled by fans with video IO. The speaker went on to give an overview of the hardware which consisted of a Rasberry Pi for running the multi media service, an stm32g4 for the main control board and an stm32f4 for the power management system. He went on to talk about the software architecture of the control system. This was running zephyr and the main command handler ran the following loop: pre-process -> state evaluation -> communication -> idle -> feedback control. He also briefly went over their develpopment setup which was OpenOCD for debugging and west (the zephyr development tool) for flashing. Finally, he showed a short video of the robot in action on the ground and said they hope Zephyr will become a standard OS for space devices. 
-Speaking as someone who doesnt know much about making robots for space, it looked pretty much like a consumer electronics project. The robot operates inside the ISS so I suspect they didnt really need to worry about radiation hardening and from what the speaker was saying it doesnt even look like they made a custom PCB for the project just attached together some dev boards you can buy easily. Im sure there is alot more to the project e.g flight stablity of the robot and things like that, but the talk did make me wonder if Codethink could do an equally good job on a project like this.
+This talked about a robotics project for JAXA to deploy a small robot used for streaming video around the inside of the ISS. The Robot looking like the Jedi training orb and was propelled by fans. The speaker went on to give an overview of the hardware which consisted of a Rasberry Pi for running the multi media service, an STM32G4 for the main control board and an stm32F4 for the power management system. He went on to talk about the software architecture of the control system. This was running zephyr and the main command handler ran the following loop: pre-process -> state evaluation -> communication -> idle -> feedback control. He also briefly went over their development setup which was OpenOCD for debugging and west (the zephyr development tool) for flashing. Finally, he showed a short video of the robot in action on the ground and said they hope Zephyr will become a standard OS for space devices. 
+Speaking as someone who doesnt know much about making robots for space, it looked more like a consumer electronics project. The robot operates inside the ISS so I suspect they didnt really need to worry about radiation hardening and from what the speaker was saying it doesnt even look like they made a custom PCB for the project just attached together some dev boards. Im sure there is alot more to the project e.g flight stablity of the robot and things like that, but the talk did make me wonder if Codethink could do an equally good job on a project like this.
 
 <!-- - gave some examples of robotics in space (namely uses on the ISS)
 - specificaly gave an example of a robot the company is working on on for streaming video around the inside of the iss
@@ -170,7 +171,7 @@ Speaking as someone who doesnt know much about making robots for space, it looke
 ### Enhancing Your Gaming Experience on Linux With Sched_ext
 A talk about improving gaming performance on linux by using a custom scheduler. A very important topic. The talk began with an overview of gaming on linux stating how there is a signifcicantly less performance compared to Windows due to un-optimised scheduling. They next went over the role of the scheduler and what needs to happen to improve gaming performance e.g can the scheduler make descions to help gaming specific tasks. Three ways raised were,
 - latency critcal tasks need to be scheduled earlier
-- a task should run long enough for warmer cache but not hog all the  the CPU time.
+- a task should run long enough for warmer cache but not hog all the CPU time.
 - not all tasks are power hungry. Some can run on power efficient cores (useful on handheld systems like the steam deck)
 
 To explain the speaker said that most gaming specific workloads have the following characteristics,
@@ -179,7 +180,7 @@ To explain the speaker said that most gaming specific workloads have the followi
 - Semi periodic: a task does similar work again and again making it very predictable.
 
 As an example of multiple tasks collaborating, the speaker showed an example task tree from the game CyberPunk 2077 making it clear that the tasks are tightly linked. They then went on to talk about how you can create your own scheduler in linux with sched_ext which enables custom scheduling policies to be implemented in a BPF program. The custom scheduler then consists of three parts, the sched_ext core in the kernel which provides hooks to redefine scheduling policy, the BPF part which defines the custom scheduling policy (sched_ext core calls a call back written in BPF when a custom policy is needed) and finally a user space part of the scheduler which loads the BPF code and is ussualy quite thin.
-Next, the speaker introduced their own gaming optimised scheduler titled LAVD (I cant remember what it stands for) which satisfied the above above condiions for optimising gaming specific workloads. They defined a task as latency critical if the wakeup frequency and wait frequency of the task is highand therefor the scheduler will assign these tasks a tighter deadline. The scheduler also aims to scheduler everything in a fixed interval. The talk finished with a demo of Space Marine 2 running on the steam deck using both the standard scheduler and the new one. The performance difference was very noticable.
+Next, the speaker introduced their own gaming optimised scheduler titled LAVD (I cant remember what it stands for) which satisfied the above above condiions for optimising gaming specific workloads. They defined a task as latency critical if the wakeup frequency and wait frequency of the task is high and therefor the scheduler will assign these tasks a tighter deadline. The scheduler also aims to scheduler everything in a fixed interval. The talk finished with a demo of Space Marine 2 running on the steam deck using both the standard scheduler and the new one. The performance difference was very noticable.
 
 
 <!-- - schedular framework - write a custom schedular
@@ -311,7 +312,7 @@ He finished off the talk by going through the steps to get Tensorflow lite runni
     - memory manegment -->
 
 ### OF-nodes, Fwnodes, Swnodes, Devlinks, Properties - Understanding How Devices Are Modeled in Linux
-This was a very interesting talk going over the structure of devices in the linux kernel and the do and donts when adding a new driver. The speaker started with some history of the kernel and how devices were orignally modeled with board files which was eventully switched to the device tree model. This seperated out te hardware description from the logic and allowed for more resuable structs as previously each driver would define its own custom structure that board files would fill. The talk then covered the various different structs for modeling devices in the kernel e.g OF-nodes, ACPI nodes and Software nodes as well as how the relationship between the bus and devices are described in the code. He finally gave a quick programming guide on which structs to use when creating a new driver. The key points were,
+This was a very interesting talk going over the structure of devices in the linux kernel and the do and donts when adding a new driver. The speaker started with some history of the kernel and how devices were orignally modeled with board files which was eventually switched to the device tree model. This seperated out the hardware description from the logic and allowed for more resuable structs as previously each driver would define its own custom structure that board files would fill. The talk then covered the various different structs for modeling devices in the kernel e.g OF-nodes, ACPI nodes and Software nodes as well as how the relationship between the bus and devices are described in the code. He finally gave a quick programming guide on which structs to use when creating a new driver. The key points were,
 - for `struct device` use `device_property_read_xyz()` to fetch device information if you dont need to parse other nodes
 - use fwnode APIs when the device is associated with a firmware node that has children with important information
 - use low level APIs when you need to iterate over all properties of an OF-node or an ACPI device node 
@@ -397,7 +398,7 @@ This was a very interesting talk going over the structure of devices in the linu
 The talk alot of people were waiting for, a short Q&A with the big man himself. He was first asked about kernel 6.18 highlights to which he said its mainly just fixes and general clean ups as the kernel is really just a bunch of drivers for hardware and that reliability is always the priority. He was asked to explain what he actually does in a merge window. On average he said he gets about 120000 commits to review and fix merge conflicts for. He was asked what some of his pet peeves were with kernel submissions to which he replied,
 - PRs on a saturday before the merge window closes
 - He runs the latest kernel on all his machines and always finds bugs which shouldnt happen, sends angry emails to maintainers
-- He doesnt like when people dont ackowledge bugs they have introduced, escpecially when a bug is introduced as a consequence of fixing a different one. He emphasised that dealing with a known bug is much better than introducing new ones.
+- He doesnt like when people dont ackowledge bugs they have introduced, escpecially when a bug is introduced as a consequence of fixing a different one. He emphasised that, as a user, dealing with a known bug is much better than introducing new ones.
 
 After this he apologised to everyone in the room for hurting anyones feelings on the mailing list which I thought was nice.
 He was finally asked about his thoughts on AI to which I thought he had a very balanced approach to. he said he hates the hype around AI but thinks its very useful as a tool for reviewing code which was a suprising take. He gave an example of a tool that found a kernel bug in a PR that he also raised as well as adding another suggetsion which he was very impressed by. Finally, he compared AI now to the state compilers were in when he first started programming but thought that the productivty increases from AI are going to be no where near the gains that compilers have provided for developers.
@@ -435,9 +436,9 @@ A talk on trying to get the Zephyr kernel certified with IEC 61508-3. The talk c
 It was noted that some of these are difficult since Zephyr is an open source project. Specificaly it was brought up that the certification expects the requirements of the project to be clearly written down however, as this is an open source project, this hasnt really happened. She went on to talk about some of the lessons they had learned from a first attempt at getting certified. Some of these were,
 - all enhancements need to go upstream
 - need general agreement from maintainers on methodology and processes
-- need open community participating ton a larger scale
+- need open community participating on a larger scale
 - need to make tooling more developer friendly
-- should use a static analysis tool for checking and enforcing coding guidelinesadd
+- should use a static analysis tool for checking and enforcing coding guidelines
 
 The talk concluded with the statement that the work needed for certification is almost done and there is alot of work on going to document requiements for the project.
 Ben Dooks asked whether the certification process itself needs to change to be more appropriate for OSS projects. The response was yes and Trustable was mentioned as an option.
@@ -514,7 +515,7 @@ The speaker finished by talking about some future improvements they would like t
 - furute plans for xen:
     - arms interrupt controller supprts interrupt injection into vms (performance improvment). Could add support for this in xen -->
 
-### Linux User Namespaces: A Blessing and a Curse (14:00 B1 4F)
+<!-- ### Linux User Namespaces: A Blessing and a Curse (14:00 B1 4F)
 - linux name spaces
     - mount namespace
         - files systems mountde under root under different dir
@@ -549,9 +550,9 @@ The speaker finished by talking about some future improvements they would like t
 - still need to improve driver support for high perf SoCs as mainly for MCUs
 - talked about steps they took to boot zepyhr
 -   - they first  port to a wdiely used soC supported by Linux
-    - went through preperation steps as well as confguration an build files -->
+    - went through preperation steps as well as confguration an build files --> -->
 
 ## Conclusion
-Overall it was a good conference. I attended a few other talks however the jet lag always seemed to hit hard at about 3 O'Clock in the afternoon so I struggled to really take much in aftyer that each day. It was interesting to learn about the SDV model as (despite working for codethink) I hadnt really been exposed to it in that much detail. Although interesting, the shift in the Automotive industry to start treating cars as software platforms concerns me due to the added complications this brings. For example introducing this huge stack of virtualisation seems to add alot of uneeded layers between the software and hardware which I imagine is going to make debugging hardware level issues very difficult. There was also an analogy made to the mobile phone when talking about the ability to provide over the air updates. This of course has alot of benefits for the software developer but also makes it very easy for the software to outgrow the hardware running it which is fine when the hardware is a phone, not so much when its your brakes.
-I ended up attending alot of Zephyr talks which is a project I hope I can get involved with in the future.
+Overall it was a good conference. It was interesting to learn about the SDV model as (despite working for codethink) I hadn't really been exposed to it in that much detail. Although interesting, the shift in the Automotive industry to start treating cars as software platforms concerned me due to the added complications this brings. For example introducing this huge stack of virtualisation that everyones so keen on seems to add alot of uneeded layers between the software and hardware which I imagine is going to make debugging hardware level issues very difficult. There was also an analogy made to the mobile phone when talking about the ability to provide over the air updates and developing for a single software platform. This of course has alot of benefits for the developer but also makes it very easy for the software to outgrow the hardware running it e.g constant updates slowly causing a loss in performance due to increased resource requirements. This isnt so bad when the hardware is a phone, not so much when its your brakes.
+I also ended up attending alot of Zephyr talks which is a project I hope I can get involved with in the future.
 
